@@ -21,7 +21,7 @@ function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_fil
 
 	local expanded_command = string.format(cxx_command_template, cxx_flags, source_file, output_dir, output_file)
 	local start_cmd = string.format(dir_to_build_file, output_dir, output_file)
-	local status = vim.fn.system('cd ' .. module .. ' && ' .. expanded_command)
+	local status = vim.fn.system(expanded_command)
 
   print(expanded_command)
 
