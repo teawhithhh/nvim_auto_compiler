@@ -1,4 +1,7 @@
+local auto_compiler
+
 local function setup(cxx_command_template, cxx_flags, cxx_build_bat, py_command_template)
+	auto_compiler = require('plenary.lazy').lazy_require('auto_compiler')
 	CXX_CMD_TEMPLATE =  cxx_command_template
 	CXX_FLAGS = cxx_flags
 	CXX_BUILD_BAT = cxx_build_bat
