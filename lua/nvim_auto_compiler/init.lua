@@ -7,14 +7,14 @@ function M.setup(cxx_command_template, cxx_flags, cxx_build_bat, py_command_temp
 	PY_CMD_TEMPLATE = py_command_template
 end
 
-function exist_file(path, filename)
+local function exist_file(path, filename)
 	local response = vim.fn.system( 'C:/Users/240821/Appdata/Local/nvim/lua/plugins/main.exe ' .. path .. '//' .. filename )
 	return response
 end
 
-function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_file, source_file, output_dir, output_file)
+local function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_file, source_file, output_dir, output_file)
 
-	if M.exist_file(output_dir, build_bat) == '0' then
+	if exist_file(output_dir, build_bat) == '0' then
 		print("Компиляция прошла успешно.\n")
     		vim.fn.system('start wt"" -d "'.. output_dir ..'"' .. ' cmd /c "' .. output_dir .. "\\build.bat " .. ' && echo. && pause"')
 		return;
@@ -34,7 +34,7 @@ function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_fil
 	end
 end
 
-function CompilePythone(py_command_template, source_file, output_dir, output_file)
+local function CompilePythone(py_command_template, source_file, output_dir, output_file)
 		local expanded_command = string.format(py_command_template, source_file, output_dir, output_file)
 		local start_cmd = expanded_command
 		local status = ''
@@ -47,7 +47,7 @@ function CompilePythone(py_command_template, source_file, output_dir, output_fil
 		end
 end
 
-function CompileCommand()
+function M.CompileCommand()
   vim.cmd('w')
 
   local dir_to_build_file = '%s/%s.exe'
@@ -69,7 +69,7 @@ function CompileCommand()
 end
 
 -- Создание команды для компиляции
-vim.cmd('command! Compile lua CompileCommand()')
+vim.cmd('command! Compile lua M.CompileCommand()')
 
 
 return M
