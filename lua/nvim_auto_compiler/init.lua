@@ -47,7 +47,7 @@ local function CompilePythone(py_command_template, source_file, output_dir, outp
 		end
 end
 
-function M.CompileCommand()
+function CompileCommand()
   vim.cmd('w')
 
   local dir_to_build_file = '%s/%s.exe'
@@ -69,7 +69,7 @@ function M.CompileCommand()
 end
 
 -- Создание команды для компиляции
-vim.cmd('command! Compile lua M.CompileCommand()')
+vim.cmd('command! Compile lua CompileCommand()')
 
 
 return M
