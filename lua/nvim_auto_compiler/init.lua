@@ -59,9 +59,9 @@ function CompileCommand()
 	print(type_file)
 
 	if type_file == "cxx" or type_file == "cpp" then
-		CompileCxx(CXX_CMD_TEMPLATE, CXX_FLAGS, CXX_BUILD_BAT, dir_to_build_file, source_file, output_dir, output_file)
+		M.CompileCxx(CXX_CMD_TEMPLATE, CXX_FLAGS, CXX_BUILD_BAT, dir_to_build_file, source_file, output_dir, output_file)
 	elseif type_file == "py" then
-		CompilePythone(PY_CMD_TEMPLATE, source_file, output_dir, output_file)
+		M.CompilePythone(PY_CMD_TEMPLATE, source_file, output_dir, output_file)
 	else
 		print("Файл не поддерживает запуск")
  		return
