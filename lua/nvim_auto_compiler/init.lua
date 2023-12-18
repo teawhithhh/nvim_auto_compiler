@@ -1,13 +1,13 @@
 local M = {}
 
-local function M.setup(cxx_command_template, cxx_flags, cxx_build_bat, py_command_template)
+function M.setup(cxx_command_template, cxx_flags, cxx_build_bat, py_command_template)
 	CXX_CMD_TEMPLATE =  cxx_command_template
 	CXX_FLAGS = cxx_flags
 	CXX_BUILD_BAT = cxx_build_bat
 	PY_CMD_TEMPLATE = py_command_template
 end
 
-local function M.exist_file(path, filename)
+function M.exist_file(path, filename)
 	local response = vim.fn.system( 'C:/Users/240821/Appdata/Local/nvim/lua/plugins/main.exe ' .. path .. '//' .. filename )
 	return response
 end
