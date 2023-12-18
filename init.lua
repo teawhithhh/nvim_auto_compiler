@@ -1,18 +1,20 @@
+local M = {}
+
 local auto_compiler
 
-local function setup(cxx_command_template, cxx_flags, cxx_build_bat, py_command_template)
+local function M.setup(cxx_command_template, cxx_flags, cxx_build_bat, py_command_template)
 	CXX_CMD_TEMPLATE =  cxx_command_template
 	CXX_FLAGS = cxx_flags
 	CXX_BUILD_BAT = cxx_build_bat
 	PY_CMD_TEMPLATE = py_command_template
 end
 
-local function exist_file(path, filename)
+local function M.exist_file(path, filename)
 	local response = vim.fn.system( 'C:/Users/240821/Appdata/Local/nvim/lua/plugins/main.exe ' .. path .. '//' .. filename )
 	return response
 end
 
-function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_file, source_file, output_dir, output_file)
+function M.CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_file, source_file, output_dir, output_file)
 
 	if exist_file(output_dir, build_bat) == '0' then
 		print("Компиляция прошла успешно.\n")
@@ -34,7 +36,7 @@ function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_fil
 	end
 end
 
-function CompilePythone(py_command_template, source_file, output_dir, output_file)
+function M.CompilePythone(py_command_template, source_file, output_dir, output_file)
 		local expanded_command = string.format(py_command_template, source_file, output_dir, output_file)
 		local start_cmd = expanded_command
 		local status = ''
@@ -47,7 +49,7 @@ function CompilePythone(py_command_template, source_file, output_dir, output_fil
 		end
 end
 
-function CompileCommand()
+function M.CompileCommand()
   vim.cmd('w')
 
   local dir_to_build_file = '%s/%s.exe'
@@ -72,7 +74,4 @@ end
 vim.cmd('command! Compile lua CompileCommand()')
 
 
-return {
-	{dir='./projects/auto_compiler.nvim', config=true},
-	setup = setup
-}
+return M
