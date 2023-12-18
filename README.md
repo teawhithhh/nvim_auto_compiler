@@ -3,7 +3,7 @@ cxx / py auto compiler plugin
 
 example config for cxx + py
 
-```cpp
+```lua
 local auto_compiler = require('auto_compiler')
 
 
