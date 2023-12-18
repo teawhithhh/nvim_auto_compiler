@@ -4,11 +4,12 @@ function M.setup(cxx_command_template, cxx_flags, cxx_build_bat, py_command_temp
 	CXX_CMD_TEMPLATE =  cxx_command_template
 	CXX_FLAGS = cxx_flags
 	CXX_BUILD_BAT = cxx_build_bat
+	CXX_EXISTS_PATH = cxx_exists_path
 	PY_CMD_TEMPLATE = py_command_template
 end
 
 function exist_file(path, filename)
-	return vim.fn.system( 'C:/Users/240821/Appdata/Local/nvim/lua/plugins/main.exe ' .. path .. '//' .. filename )
+	return vim.fn.system( CXX_EXISTS_PATH .. ' ' .. path .. '//' .. filename )
 end
 
 function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_file, source_file, output_dir, output_file)
