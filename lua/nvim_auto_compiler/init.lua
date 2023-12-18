@@ -14,9 +14,9 @@ end
 
 function M.CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_file, source_file, output_dir, output_file)
 
-	if exist_file(output_dir, build_bat) == '0' then
+	if M.exist_file(output_dir, build_bat) == '0' then
 		print("Компиляция прошла успешно.\n")
-    vim.fn.system('start wt"" -d "'.. output_dir ..'"' .. ' cmd /c "' .. output_dir .. "\\build.bat " .. ' && echo. && pause"')
+    		vim.fn.system('start wt"" -d "'.. output_dir ..'"' .. ' cmd /c "' .. output_dir .. "\\build.bat " .. ' && echo. && pause"')
 		return;
 	end
 
