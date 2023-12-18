@@ -35,29 +35,23 @@ function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_fil
 end
 
 function CompilePythone(py_command_template, source_file, output_dir, output_file)
-		local expanded_command = string.format(py_command_template, source_file, output_dir, output_file)
-		local start_cmd = expanded_command
-		local status = ''
+	local expanded_command = string.format(py_command_template, source_file, output_dir, output_file)
+	local start_cmd = expanded_command
 
-		if status == '' then
-			vim.fn.system('start wt"" -d "C:\\Users\\240821" cmd /c "' .. start_cmd .. ' && echo. && pause"')
-			print("Компиляция прошла успешно.\n")
-		else
-			print("Ошибка компиляции. Код ошибки:\n" .. status)
-		end
+	vim.fn.system('start wt"" -d "C:\\Users\\240821" cmd /c "' .. start_cmd .. ' && echo. && pause"')
+	print("Запуск прошел успешно.\n")
 end
 
 function CompileCommand()
-  vim.cmd('w')
-
-  local dir_to_build_file = '%s/%s.exe'
-  local source_file = vim.fn.expand('%:p')  -- полный путь к текущему файлу
-  local output_dir = vim.fn.expand('%:p:h')  -- каталог текущего файла с полным путем
-  local output_file = vim.fn.expand('%:t:r') -- имя текущего файла без расширения
-  local type_file = vim.fn.fnamemodify(source_file, ':e')
-
+	vim.cmd('w')
+	local dir_to_build_file = '%s/%s.exe'
+  	local source_file = vim.fn.expand('%:p')  -- полный путь к текущему файлу
+  	local output_dir = vim.fn.expand('%:p:h')  -- каталог текущего файла с полным путем
+  	local output_file = vim.fn.expand('%:t:r') -- имя текущего файла без расширения
+  	local type_file = vim.fn.fnamemodify(source_file, ':e')
+	
 	print(type_file)
-
+	
 	if type_file == "cxx" or type_file == "cpp" then
 		CompileCxx(CXX_CMD_TEMPLATE, CXX_FLAGS, CXX_BUILD_BAT, dir_to_build_file, source_file, output_dir, output_file)
 	elseif type_file == "py" then
@@ -70,6 +64,5 @@ end
 
 -- Создание команды для компиляции
 vim.cmd('command! Compile lua CompileCommand()')
-
 
 return M
