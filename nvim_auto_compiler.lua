@@ -1,7 +1,5 @@
 local M = {}
 
-local auto_compiler
-
 local function M.setup(cxx_command_template, cxx_flags, cxx_build_bat, py_command_template)
 	CXX_CMD_TEMPLATE =  cxx_command_template
 	CXX_FLAGS = cxx_flags
