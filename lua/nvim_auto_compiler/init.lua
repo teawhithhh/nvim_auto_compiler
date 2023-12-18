@@ -69,7 +69,7 @@ function M.CompileCommand()
 end
 
 -- Создание команды для компиляции
-vim.cmd('command! Compile lua CompileCommand()')
+vim.cmd('command! Compile lua M.CompileCommand()')
 
 
 return M
