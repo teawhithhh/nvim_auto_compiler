@@ -8,8 +8,7 @@ function M.setup(cxx_command_template, cxx_flags, cxx_build_bat, py_command_temp
 end
 
 function exist_file(path, filename)
-	local response = vim.fn.system( 'C:/Users/240821/Appdata/Local/nvim/lua/plugins/main.exe ' .. path .. '//' .. filename )
-	return response
+	return vim.fn.system( 'C:/Users/240821/Appdata/Local/nvim/lua/plugins/main.exe ' .. path .. '//' .. filename )
 end
 
 function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_file, source_file, output_dir, output_file)
