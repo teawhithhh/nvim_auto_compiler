@@ -1,6 +1,6 @@
 local M = {}
 
-function M.setup(cxx_command_template, cxx_flags, cxx_build_bat, py_command_template)
+function M.setup(cxx_command_template, cxx_flags, cxx_build_bat, cxx_exists_path, py_command_template)
 	CXX_CMD_TEMPLATE =  cxx_command_template
 	CXX_FLAGS = cxx_flags
 	CXX_BUILD_BAT = cxx_build_bat
