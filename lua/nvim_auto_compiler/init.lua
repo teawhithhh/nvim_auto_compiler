@@ -39,7 +39,7 @@ function CompilePythone(py_command_template, source_file, output_dir, output_fil
 	local expanded_command = string.format(py_command_template, source_file, output_dir, output_file)
 	local start_cmd = expanded_command
 
-	vim.fn.system('wt"" cd "C:\\Users\\240821" cmd /c "' .. start_cmd .. ' && echo. && pause"')
+	vim.fn.system('wt"" cd "C:\\Users\\240821" cmd "' .. start_cmd .. ' && echo. && pause"')
 	print("Запуск прошел успешно.\n")
 end
 
