@@ -16,7 +16,7 @@ function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_fil
 
 	if exist_file(output_dir, build_bat) == '0' then
 		print("Компиляция прошла успешно.\n")
-    		vim.fn.system('wt"" cd "'.. output_dir ..'"' .. ' cmd /c "' .. output_dir .. "\\build.bat " .. ' && echo. && pause"')
+    		vim.fn.system('wt new-tab cmd cd "'.. output_dir ..'"' .. ' && "' .. output_dir .. "\\build.bat " .. ' && echo. && pause && exit"')
 		return;
 	end
 
@@ -28,7 +28,7 @@ function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_fil
 
   if status == '' then
     print("Компиляция прошла успешно.\n")
-    vim.fn.system('wt new-tab PowerShell -c Start-Service; new-tab cmd cd "C:\\Users\\240821" /c "' .. start_cmd .. ' && echo. && pause && exit"')
+    vim.fn.system('wt new-tab cmd cd "C:\\Users\\240821" /c "' .. start_cmd .. ' && echo. && pause && exit"')
 	else
 		print("Ошибка компиляции. Код ошибки:\n" .. status)
 	end
