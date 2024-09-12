@@ -29,7 +29,7 @@ function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_fil
   if status == '' then
     print("Компиляция прошла успешно.\n")
     print(start_cmd)
-    vim.fn.system('wt new-tab cmd /k /d' .. start_cmd .. ' && echo. && pause && exit')
+    vim.fn.system('wt new-tab ' .. start_cmd .. ' && pause')
 	else
 		print("Ошибка компиляции. Код ошибки:\n" .. status)
 	end
