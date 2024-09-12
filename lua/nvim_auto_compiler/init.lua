@@ -16,7 +16,7 @@ function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_fil
 
 	if exist_file(output_dir, build_bat) == '0' then
 		print("Компиляция прошла успешно.\n")
-    		vim.fn.system('wt"" -d "'.. output_dir ..'"' .. ' cmd /c "' .. output_dir .. "\\build.bat " .. ' && echo. && pause"')
+    		vim.fn.system('wt"" cd "'.. output_dir ..'"' .. ' cmd /c "' .. output_dir .. "\\build.bat " .. ' && echo. && pause"')
 		return;
 	end
 
@@ -28,7 +28,7 @@ function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_fil
 
   if status == '' then
     print("Компиляция прошла успешно.\n")
-    vim.fn.system('wt"" -d "C:\\Users\\240821" cmd /c "' .. start_cmd .. ' && echo. && pause"')
+    vim.fn.system('wt"" cd "C:\\Users\\240821" cmd /c "' .. start_cmd .. ' && echo. && pause"')
 	else
 		print("Ошибка компиляции. Код ошибки:\n" .. status)
 	end
@@ -38,7 +38,7 @@ function CompilePythone(py_command_template, source_file, output_dir, output_fil
 	local expanded_command = string.format(py_command_template, source_file, output_dir, output_file)
 	local start_cmd = expanded_command
 
-	vim.fn.system('wt"" -d "C:\\Users\\240821" cmd /c "' .. start_cmd .. ' && echo. && pause"')
+	vim.fn.system('wt"" cd "C:\\Users\\240821" cmd /c "' .. start_cmd .. ' && echo. && pause"')
 	print("Запуск прошел успешно.\n")
 end
 
