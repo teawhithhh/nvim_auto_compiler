@@ -28,6 +28,7 @@ function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_fil
 
   if status == '' then
     print("Компиляция прошла успешно.\n")
+    print(start_cmd)
     vim.fn.system('wt new-tab cmd cd "C:\\Users\\240821" /c "' .. start_cmd .. ' && echo. && pause && exit"')
 	else
 		print("Ошибка компиляции. Код ошибки:\n" .. status)
