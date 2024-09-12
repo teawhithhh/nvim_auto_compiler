@@ -16,7 +16,7 @@ function CompileCxx(cxx_command_template, cxx_flags, build_bat, dir_to_build_fil
 
 	if exist_file(output_dir, build_bat) == '0' then
 		print("Компиляция прошла успешно.\n")
-    		vim.fn.system('wt new-tab cmd /c cd "'.. output_dir ..'" && build.bat && echo. && pause && exit"')
+    		vim.fn.system('wt new-tab cmd /k "cd /d "'.. output_dir ..'" && build.bat && echo. && pause"')
 		return;
 	end
 
